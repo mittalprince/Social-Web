@@ -23,6 +23,8 @@ connect.then((db)=>{
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,6 +39,22 @@ app.use(express_session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+var porfileRouter = require('./routes/profile');
+
+app.use('/profile', porfileRouter);
+
+
+
+// error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = err;
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+});
 
 let port = process.env.PORT || 8000
 
