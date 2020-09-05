@@ -29,8 +29,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup passport with express-session
-app.use(express_sessions({
-    secret: process.env.express_session_secret
+app.use(express_session({
+    secret: process.env.express_session_secret,
+    resave: false,
+    saveUninitialized: true,
 }));
 app.use(passport.initialize());
 app.use(passport.session());
