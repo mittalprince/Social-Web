@@ -26,13 +26,25 @@ const UserSchema = new mongoose.Schema({
     followers:[{
         follwerId:{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            required: true
+        },
+        username:{
+            type: String,
+            required: true,
+            default: ''
         }
     }],
     followings:[{
         followingPersonId:{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            required: true
+        },
+        username: {
+            type: String,
+            required: true,
+            default: ''
         }
     }],
     posts:[{
