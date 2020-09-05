@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const PostSchema = new mongoose.Schema({
-    author:{
+    authorId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        required: true
+    },
+    authoer:{
+        type: String,
         required: true
     },
     topic:{
