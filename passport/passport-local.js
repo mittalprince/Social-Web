@@ -22,6 +22,7 @@ passport.deserializeUser((username, done) => {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
+    console.log(username," ", password);
     User.findOne({ username: username }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
@@ -34,3 +35,5 @@ passport.use(new LocalStrategy(
     });
   }
 ));
+
+module.exports = passport;

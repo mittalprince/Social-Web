@@ -9,11 +9,11 @@ const Post = require('../models/post');
 const passport = require('../passport/passport-local');
 
 router.post('/signup', (req, res) =>{
+    console.log(req.body.user);
+
     User.findOne({
-        $or:[
-            {email:req.body.email},
-            {username: req.body.username}
-        ]
+        email:req.body.user.email,
+        username: req.body.user.username
     }).exec((err, found_user)=>{
         if(err){
             console.log("error in /signup");
@@ -24,12 +24,11 @@ router.post('/signup', (req, res) =>{
             return res.send(undefined);
         }
 
-        const newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            name: req.body.name,
-            password: newUser.encryptPassword(req.body.password)
-        })
+        const newUser = new User()
+        newUser.username= req.body.user.username,
+        newUser.email= req.body.user.email,
+        newUser.name= req.body.user.name,
+        newUser.password= newUser.encryptPassword(req.body.user.password)
 
         User.create(newUser, (err, new_user)=>{
             if(err){
@@ -56,15 +55,20 @@ router.get('/logout',(req,res)=>{
     res.redirect('/');
 })
 
-router.get('/failure',(req,res)=>{
+router.get('/login/failure',(req,res)=>{
     console.log('Failed to Login');
     res.redirect('/login');
 })
 
-router.get('/success',(req,res)=>{
+router.get('/login/success',(req,res)=>{
     console.log('Login Successful');
     res.redirect('/profile')
 })
 
+router.get('/logout', (req, res)=>{
+    req.logOut();
+    console.log("Logged Out Succefully");
+    res.redirect('/login');
+})
 
 module.exports = router;

@@ -43,9 +43,18 @@ function checkFileType(file, callback){
 }
 //----------------------------------
 
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    } else {
+        console.log('You are not logged in');
+        res.redirect('/login');
+    }
+}
 
 // get detail of req.user.username
-router.get('/', (req,res)=>{
+router.get('/', ensureAuthenticated, (req,res)=>{
+    console.log(req.user.username);
     User.findOne({
         username: req.user.username
     }, (err, found_user)=>{
@@ -57,12 +66,13 @@ router.get('/', (req,res)=>{
             console.log("User not found in user/details");
             return res.send(undefined);
         }
+        console.log(found_user);
         return res.send(found_user);
     })
 })
 
 // change password
-router.put('/password/change', (req, res)=>{
+router.put('/password', ensureAuthenticated, (req, res)=>{
     let pass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null);
     User.findOneAndUpdate({
         username: req.user.username
@@ -81,12 +91,12 @@ router.put('/password/change', (req, res)=>{
             console.log('No user found in password/change');
             return res.send(undefined);
         }
-        return res.send(found_user);
+        return res.send(updated_user);
     })
 })
 
 // to upload new profile image
-router.put('/upload/pimage', (req,res)=>{
+router.put('/upload/pimage', ensureAuthenticated, (req,res)=>{
     upload(req,res,(err)=>{
         if(err){
             console.log('error in /upload/image');
@@ -124,8 +134,8 @@ router.put('/upload/pimage', (req,res)=>{
 })
 
 // update name in profile section
-route.put('/profile_update', (req,res) =>{
-    users.findOneAndUpdate({"username":req.user.username},{
+router.put('/update', ensureAuthenticated, (req,res) =>{
+    User.findOneAndUpdate({username:req.user.username},{
         $set:{
             name: req.body.name
         }
@@ -142,7 +152,7 @@ route.put('/profile_update', (req,res) =>{
 })
 
 // get loggedIn user posts
-router.get('/posts', (req,res)=>{
+router.get('/posts', ensureAuthenticated, (req,res)=>{
     Post.find({
         author: req.query.username
     }).exec((err, found_posts)=>{
@@ -150,16 +160,12 @@ router.get('/posts', (req,res)=>{
             console.log('Error in user/posts', err);
             return res.send(undefined);
         }
-        if(!found_posts){
-            console.log("Posts not found in user/posts");
-            return res.send(undefined);
-        }
         return res.send(found_posts);
     })
 })
 
 // get posts of user followed by curr user including himself
-route.get('/posts/followers', (req, res)=>{
+router.get('/posts/followers', ensureAuthenticated, (req, res)=>{
     let followers = [req.user.follwerId];
     followers.push(req.user._id);
 
@@ -172,17 +178,13 @@ route.get('/posts/followers', (req, res)=>{
             console.log("Error in user/post/follower ", err);
             return res.send(undefined);
         }
-        if(!found_post){
-            console.log("No post found");
-            return res.send(undefined);
-        }
-
         return res.send(found_post);
     })
 })
 
 // to follow new user
-router.put('/follow/user', (req, res)=>{
+router.put('/follow/user', ensureAuthenticated, (req, res)=>{
+    console.log(req.query.user)
     let update_query={
         follwerId: req.query.user._id,
         username: req.query.user.username
@@ -233,7 +235,7 @@ router.put('/follow/user', (req, res)=>{
 })
 
 // to unfollow a user
-router.put('/unfollow/user', (req, res)=>{
+router.put('/unfollow/user', ensureAuthenticated, (req, res)=>{
     let update_query={
         follwerId: req.query.user._id,
         username: req.query.user.username

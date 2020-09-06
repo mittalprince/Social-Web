@@ -12,7 +12,7 @@ const express_session = require('express-session');
 const mongoose = require('mongoose');
 const mongo_uri = process.env.mongo_uri;
 
-const connect = mongoose.connect(mongo_uri, {useUnifiedTopology: true, useNewUrlParser:true});
+const connect = mongoose.connect(mongo_uri, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify:true});
 connect.then((db)=>{
     console.log("Database Connected Successfully");
 }, (err)=>{
@@ -20,8 +20,8 @@ connect.then((db)=>{
 })
 // ----------------------------------
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
 
 
 
@@ -66,7 +66,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.send(undefined);
 });
 
 
