@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    authoer:{
+    author:{
         type: String,
         required: true
     },
@@ -22,12 +22,10 @@ const PostSchema = new mongoose.Schema({
     comments:[{
         text:{
             type: String,
-            required: true
         },
         replies:[{
             text:{
                 type: String,
-                required: true
             },
             likes:{
                 type: Number,
@@ -42,6 +40,9 @@ const PostSchema = new mongoose.Schema({
     likes:{
         type: Number,
         default: 0
+    },
+    image:{
+        type: String
     }
 })
 
