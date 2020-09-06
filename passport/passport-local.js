@@ -8,14 +8,16 @@ passport.serializeUser((user, done) => {// saved to session, req.session.passpor
     done(null, user.username);
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user)=>{
-        if(err || !user){
-            return done(err || new Error("No Such User Exist"));
-        }
-        // user -> user object attaches to the request as req.user
-        return done(null, user)
-    })
+passport.deserializeUser((username, done) => {
+  User.findOne({
+    username: username
+  }).exec((err, user) =>{
+    if(err || !user){
+      return done(err || new Error("Np Such User Exist"));
+    }
+    // user -> user object attaches to the request as req.user
+    return done(null, user);
+  })
 });
 
 passport.use(new LocalStrategy(
