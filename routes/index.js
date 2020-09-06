@@ -8,6 +8,7 @@ const Post = require('../models/post');
 
 const passport = require('../passport/passport-local');
 
+
 router.post('/signup', (req, res) =>{
     // console.log(req.body.user);
 

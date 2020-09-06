@@ -53,6 +53,13 @@ function ensureAuthenticated(req, res, next){
     }
 }
 
+router.get('/verify_user', (req,res)=>{
+    if(req.user){
+        return res.send(req.user);
+    }
+    return res.send(undefined);
+})
+
 // get detail of req.user.username
 router.get('/', ensureAuthenticated, (req,res)=>{
     console.log(req.user.username);
