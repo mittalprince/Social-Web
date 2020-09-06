@@ -1,3 +1,5 @@
+// API related to loggednIn user, fetch detail, change passowrd, update name, update name, get followers_post
+
 'use strict'
 
 const express = require('express');
@@ -136,6 +138,46 @@ route.post('/profile_update', (req,res) =>{
         }
         
         return res.send(updated_user);
+    })
+})
+
+// get loggedIn user posts
+router.get('/posts', (req,res)=>{
+    Post.find({
+        author: req.query.username
+    }).exec((err, found_posts)=>{
+        if(err){
+            console.log('Error in user/posts', err);
+            return res.send(undefined);
+        }
+        if(!found_posts){
+            console.log("Posts not found in user/posts");
+            return res.send(undefined);
+        }
+        return res.send(found_posts);
+    })
+})
+
+// get posts of user followed by curr user including himself
+route.get('/posts/followers', (req, res)=>{
+    let followers = [req.user.follwerId];
+    followers.push(req.user._id);
+
+    Post.find({
+        authorId:{
+            $in: [followers]
+        }
+    }).exec((err, found_post)=>{
+        if(err){
+            console.log("Error in user/post/follower ", err);
+            return res.send(undefined);
+        }
+        if(!found_post){
+            console.log("No post found");
+            return res.send(undefined);
+        }
+
+        return res.send(found_post);
     })
 })
 
