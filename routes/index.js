@@ -24,7 +24,7 @@ router.post('/signup', (req, res) =>{
             console.log("Already exist detail in /signup");
             return res.send(undefined);
         }
-
+        
         const newUser = new User()
         newUser.username= req.body.user.username,
         newUser.email= req.body.user.email,
@@ -39,7 +39,7 @@ router.post('/signup', (req, res) =>{
             if(!new_user){
                 console.log("no user in /signup while creating")
             }
-            // console.log(new_user);
+            
             return res.send(new_user);
         })
     })
@@ -58,12 +58,12 @@ router.get('/logout',(req,res)=>{
 
 router.get('/login/failure',(req,res)=>{
     console.log('Failed to Login');
-    res.redirect('/login');
+    res.send(undefined);
 })
 
 router.get('/login/success',(req,res)=>{
     console.log('Login Successful');
-    res.redirect('/profile')
+    res.send(req.user)
 })
 
 router.get('/logout', (req, res)=>{

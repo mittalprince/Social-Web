@@ -9,7 +9,6 @@ $(document).ready(function (){
         let username= user_name.val().trim();
         let password= user_password.val();
 
-
         if((username !== "") && (password !== "")){
             
             $("#login_btn").prop('disabled', true);    
@@ -21,7 +20,7 @@ $(document).ready(function (){
                     alert('Invalid Username or Password');
                     window.location.reload(true);
                 } else {
-                    // alert('You have successfully logged in');
+                    alert('You have successfully logged in');
                     window.location.assign('/');
                 }
             })
