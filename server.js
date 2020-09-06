@@ -27,10 +27,11 @@ app.set('view engine', 'hbs');
 
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// setup passport with express-session
+
+// setup passport with express-session-----------
 app.use(express_session({
     secret: process.env.express_session_secret,
     resave: false,
@@ -38,14 +39,26 @@ app.use(express_session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+//-------------------------------------------------
 
+
+
+// Route Handling-------------------------
+var indexRouter = require('./routes/index');
 var porfileRouter = require('./routes/profile');
+var userRouter = require('./routes/user');
+var postsRouter = require('./routes/post');
+// ---------------------------------------
 
+
+
+app.use('/', indexRouter);
+app.use('/user', userRouter);
 app.use('/profile', porfileRouter);
+app.use('/posts', postsRouter);
 
 
-
-// error handler
+// common error handler
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -55,6 +68,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
 
 let port = process.env.PORT || 8000
 

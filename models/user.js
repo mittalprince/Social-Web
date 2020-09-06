@@ -53,6 +53,10 @@ const UserSchema = new mongoose.Schema({
     }]
 })
 
+UserSchema.methods.encryptPassword = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+};
+
 UserSchema.methods.validUserPassword = function(password){
     return bcrypt.compareSync(password, this.password);
 };
