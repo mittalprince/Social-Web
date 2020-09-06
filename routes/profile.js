@@ -166,13 +166,15 @@ router.get('/posts', ensureAuthenticated, (req,res)=>{
 })
 
 // get posts of user followed by curr user including himself
-router.get('/posts/followers', ensureAuthenticated, (req, res)=>{
-    let followers = [req.user.follwerId];
+router.get('/posts/following', ensureAuthenticated, (req, res)=>{
+    let followers = req.user.followings.map((followings) =>{
+        return followings.followingPersonId
+    })
     followers.push(req.user._id);
-
+    
     Post.find({
         authorId:{
-            $in: [followers]
+            $in: followers
         }
     }).exec((err, found_post)=>{
         if(err){
