@@ -9,7 +9,7 @@ const Post = require('../models/post');
 const passport = require('../passport/passport-local');
 
 router.post('/signup', (req, res) =>{
-    console.log(req.body.user);
+    // console.log(req.body.user);
 
     User.findOne({
         email:req.body.user.email,
@@ -38,7 +38,7 @@ router.post('/signup', (req, res) =>{
             if(!new_user){
                 console.log("no user in /signup while creating")
             }
-            console.log(new_user);
+            // console.log(new_user);
             return res.send(new_user);
         })
     })
