@@ -15,7 +15,7 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    message:{
+    text:{
         type: String,
         required: true
     },
@@ -30,11 +30,17 @@ const PostSchema = new mongoose.Schema({
             likes:{
                 type: Number,
                 default: 0
+            },
+            author:{
+                type:String
             }
         }],
         likes:{
             type: Number,
             default: 0
+        },
+        author:{
+            type:String
         }
     }],
     likes:{
