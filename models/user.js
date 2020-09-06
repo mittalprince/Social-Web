@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    followers:[{
+    followers:[{ // jo mereko follow karnge
         follwerId:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema({
             default: ''
         }
     }],
-    followings:[{
+    followings:[{ // jinko mein follow karunga
         followingPersonId:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',

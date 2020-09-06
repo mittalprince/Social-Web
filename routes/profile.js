@@ -4,6 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const multer  = require('multer');
 const fs = require('fs');
@@ -66,7 +67,7 @@ router.get('/', ensureAuthenticated, (req,res)=>{
             console.log("User not found in user/details");
             return res.send(undefined);
         }
-        console.log(found_user);
+        // console.log(found_user);
         return res.send(found_user);
     })
 })
@@ -141,7 +142,7 @@ router.put('/update', ensureAuthenticated, (req,res) =>{
         }
     }, {
         new: true
-    }, (err,updated_user)=>{
+    }).exec((err, updated_user)=>{
         if(err){
             console.log("Error int /profile/profile_update");
             return res.send(undefined);
@@ -184,17 +185,15 @@ router.get('/posts/followers', ensureAuthenticated, (req, res)=>{
 
 // to follow new user
 router.put('/follow/user', ensureAuthenticated, (req, res)=>{
-    console.log(req.query.user)
+    console.log(req.body.user, req.user.username)
     let update_query={
-        follwerId: req.query.user._id,
-        username: req.query.user.username
+        followingPersonId: mongoose.Types.ObjectId(req.body.user._id),
+        username: req.body.user.username
     }
 
-    User.findOneAndUpdate({
-        username:req.user.username
-    },{
-        $addToSet:{
-            followers:update_query
+    User.findOneAndUpdate({username:req.user.username},{
+        $addToSet: {
+            followings: update_query
         }
     },{
         new:true
@@ -203,14 +202,15 @@ router.put('/follow/user', ensureAuthenticated, (req, res)=>{
             console.log("Error in put /follow/user ", err);
             return res.send(undefined);
         }
-        if(update_query){
-            User.findByIdAndUpdate({
-                username: updated_user.username
-            },{
+        if(updated_user){
+            console.log("updated works")
+            User.findOneAndUpdate({
+                username: req.body.user.username
+            },{ 
                 $addToSet:{
-                    followings:{
-                        followingPersonId:req.user._id,
-                        username:req.user.username
+                    followers:{
+                        follwerId: mongoose.Types.ObjectId(updated_user._id),
+                        username: updated_user.username
                     }
                 }
             },{
@@ -229,23 +229,25 @@ router.put('/follow/user', ensureAuthenticated, (req, res)=>{
                 return res.send(undefined);
             })
         }
-        console.log("Not found any user 1");
-        return res.send(undefined);
+        else{
+            console.log("Not found any user 1");
+            return res.send(undefined);
+        }
     })
 })
 
 // to unfollow a user
 router.put('/unfollow/user', ensureAuthenticated, (req, res)=>{
     let update_query={
-        follwerId: req.query.user._id,
-        username: req.query.user.username
+        followingPersonId: mongoose.Types.ObjectId(req.body.user._id),
+        username: req.body.user.username
     }
 
     User.findOneAndUpdate({
         username:req.user.username
     },{
         $pull:{
-            followers:update_query
+            followings:update_query
         }
     },{
         new:true
@@ -254,14 +256,15 @@ router.put('/unfollow/user', ensureAuthenticated, (req, res)=>{
             console.log("Error in put /unfollow/user ", err);
             return res.send(undefined);
         }
-        if(update_query){
-            User.findByIdAndUpdate({
-                username: updated_user.username
+        if(updated_user){
+            console.log("Update works")
+            User.findOneAndUpdate({
+                username: req.body.user.username
             },{
                 $pull:{
-                    followings:{
-                        followingPersonId:req.user._id,
-                        username:req.user.username
+                    followers: {
+                        follwerId: mongoose.Types.ObjectId(updated_user._id),
+                        username: updated_user.username
                     }
                 }
             },{
@@ -280,8 +283,10 @@ router.put('/unfollow/user', ensureAuthenticated, (req, res)=>{
                 return res.send(undefined);
             })
         }
-        console.log("Not found any user unfollow 1");
-        return res.send(undefined);
+        else{
+            console.log("Not found any user unfollow 1");
+            return res.send(undefined);
+        }
     })
 })
 

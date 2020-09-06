@@ -12,7 +12,7 @@ const express_session = require('express-session');
 const mongoose = require('mongoose');
 const mongo_uri = process.env.mongo_uri;
 
-const connect = mongoose.connect(mongo_uri, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify:true});
+const connect = mongoose.connect(mongo_uri, { useUnifiedTopology: true, useNewUrlParser: true});
 connect.then((db)=>{
     console.log("Database Connected Successfully");
 }, (err)=>{
