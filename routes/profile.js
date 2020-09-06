@@ -62,7 +62,7 @@ router.get('/', (req,res)=>{
 })
 
 // change password
-router.post('/password/change', (req, res)=>{
+router.put('/password/change', (req, res)=>{
     let pass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null);
     User.findOneAndUpdate({
         username: req.user.username
@@ -86,7 +86,7 @@ router.post('/password/change', (req, res)=>{
 })
 
 // to upload new profile image
-router.post('/upload/pimage', (req,res)=>{
+router.put('/upload/pimage', (req,res)=>{
     upload(req,res,(err)=>{
         if(err){
             console.log('error in /upload/image');
@@ -124,7 +124,7 @@ router.post('/upload/pimage', (req,res)=>{
 })
 
 // update name in profile section
-route.post('/profile_update', (req,res) =>{
+route.put('/profile_update', (req,res) =>{
     users.findOneAndUpdate({"username":req.user.username},{
         $set:{
             name: req.body.name
@@ -178,6 +178,108 @@ route.get('/posts/followers', (req, res)=>{
         }
 
         return res.send(found_post);
+    })
+})
+
+// to follow new user
+router.put('/follow/user', (req, res)=>{
+    let update_query={
+        follwerId: req.query.user._id,
+        username: req.query.user.username
+    }
+
+    User.findOneAndUpdate({
+        username:req.user.username
+    },{
+        $addToSet:{
+            followers:update_query
+        }
+    },{
+        new:true
+    }).exec((err, updated_user)=>{
+        if(err){
+            console.log("Error in put /follow/user ", err);
+            return res.send(undefined);
+        }
+        if(update_query){
+            User.findByIdAndUpdate({
+                username: updated_user.username
+            },{
+                $addToSet:{
+                    followings:{
+                        followingPersonId:req.user._id,
+                        username:req.user.username
+                    }
+                }
+            },{
+                new:true
+            }).exec((err, final_opr_user)=>{
+                if (err) {
+                    console.log("Error in put /follow/user 2", err);
+                    return res.send(undefined);
+                }
+                if(final_opr_user){
+                    console.log(updated_user);
+                    console.log(final_opr_user);
+                    return res.send(updated_user);
+                }
+                console.log("Not found any user 2")
+                return res.send(undefined);
+            })
+        }
+        console.log("Not found any user 1");
+        return res.send(undefined);
+    })
+})
+
+// to unfollow a user
+router.put('/unfollow/user', (req, res)=>{
+    let update_query={
+        follwerId: req.query.user._id,
+        username: req.query.user.username
+    }
+
+    User.findOneAndUpdate({
+        username:req.user.username
+    },{
+        $pull:{
+            followers:update_query
+        }
+    },{
+        new:true
+    }).exec((err, updated_user)=>{
+        if(err){
+            console.log("Error in put /unfollow/user ", err);
+            return res.send(undefined);
+        }
+        if(update_query){
+            User.findByIdAndUpdate({
+                username: updated_user.username
+            },{
+                $pull:{
+                    followings:{
+                        followingPersonId:req.user._id,
+                        username:req.user.username
+                    }
+                }
+            },{
+                new:true
+            }).exec((err, final_opr_user)=>{
+                if (err) {
+                    console.log("Error in put /unfollow/user 2", err);
+                    return res.send(undefined);
+                }
+                if(final_opr_user){
+                    console.log(updated_user);
+                    console.log(final_opr_user);
+                    return res.send(updated_user);
+                }
+                console.log("Not found any user unfollow 2")
+                return res.send(undefined);
+            })
+        }
+        console.log("Not found any user unfollow 1");
+        return res.send(undefined);
     })
 })
 
