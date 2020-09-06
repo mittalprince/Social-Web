@@ -58,12 +58,12 @@ router.get('/logout',(req,res)=>{
 
 router.get('/failure',(req,res)=>{
     console.log('Failed to Login');
-    res.send(undefined);
+    res.redirect('/login');
 })
 
 router.get('/success',(req,res)=>{
     console.log('Login Successful');
-    res.send(req.user.username);
+    res.redirect('/profile')
 })
 
 
