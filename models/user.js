@@ -50,7 +50,11 @@ const UserSchema = new mongoose.Schema({
     posts:[{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Posts'
-    }]
+    }],
+    pimage:{
+        type:String,
+        default: 'user.png'
+    }
 })
 
 UserSchema.methods.encryptPassword = function(password){
