@@ -27,11 +27,9 @@ const UserSchema = new mongoose.Schema({
         follwerId:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true
         },
         username:{
             type: String,
-            required: true,
             default: ''
         }
     }],
@@ -39,11 +37,9 @@ const UserSchema = new mongoose.Schema({
         followingPersonId:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true
         },
         username: {
             type: String,
-            required: true,
             default: ''
         }
     }],
