@@ -8,4 +8,8 @@ $(document).ready(function (){
             
         }
     });
+
+    $.get("/posts/all", (posts)=>{
+        console.log(posts);
+    })
 })
