@@ -7,7 +7,7 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="./test.css">
 
 </head>
 
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-dark navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fab fa-twitter" style="color:#007bff" id="twitter-icon"></i> Social Web
+                <i class="fab fa-twitter" id="twitter-icon"></i> Social Web
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -66,7 +66,7 @@
                         <span class="text-muted">@mittalprince</span>
                     </div>
                     <div class="col text-right">
-                        <button type="button" class="btn btn-outline-primary follow">Follow</button>
+                        <button type="button" class="btn btn-outline-primary follow font-weight-bold">Follow</button>
                     </div>
                 </div>
 
@@ -101,14 +101,15 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" href="#profile"
-                                    role="tab" aria-controls="profile" aria-selected="false">Followers</a>
+                                    role="tab" aria-controls="profile" aria-selected="false">Followings</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-weight-bold" id="contact-tab" data-toggle="tab" href="#contact"
-                                    role="tab" aria-controls="contact" aria-selected="false">Followings</a>
+                                    role="tab" aria-controls="contact" aria-selected="false">Followers</a>
                             </li>
                         </ul>
                         <div class="tab-content mt-2" id="myTabContent">
+                            <!-- Posts -->
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="card mb-1">
                                     <div class="card-header">
@@ -123,12 +124,14 @@
                                                     <span class="text-muted">@mittalprince</span>
                                                 </div>
                                             </div>
-                                            <div class="text-muted h7">
+                                            <!-- <div class="text-muted h7">
                                                 <i class="far fa-clock mr-1"></i>10 min ago
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        <div class="text-muted h7 mb-2 mr-1"> <i class="far fa-clock mr-1"></i>10 min
+                                            ago</div>
                                         <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
 
                                         <p class="card-text-custom text-muted">
@@ -171,12 +174,14 @@
                                                     <span class="text-muted">@mittalprince</span>
                                                 </div>
                                             </div>
-                                            <div class="text-muted h7">
+                                            <!-- <div class="text-muted h7">
                                                 <i class="far fa-clock mr-1"></i>10 min ago
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        <div class="text-muted h7 mb-2 mr-1"> <i class="far fa-clock mr-1"></i>10 min
+                                            ago</div>
                                         <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
 
                                         <p class="card-text-custom text-muted">
@@ -207,25 +212,203 @@
                                 </div>
 
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu
-                                    stumptown aliqua, retro synth master
-                                    cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
-                                    butcher retro keffiyeh
-                                    dreamcatcher
-                                    synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                                    placeat salvia cillum iphone. Seitan
-                                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+
+                            <!-- Following -->
+                            <div class="tab-pane fade mt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Rishabh Kumar Bothra</div>
+                                                    <span class="text-muted">@geekychaser</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary follow font-weight-bold">
+                                                    <span>Following</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Rishabh Kumar Bothra</div>
+                                                    <span class="text-muted">@geekychaser</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary follow font-weight-bold">
+                                                    <span>Following</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary follow font-weight-bold">
+                                                    <span>Following</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Rishabh Kumar Bothra</div>
+                                                    <span class="text-muted">@geekychaser</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary follow font-weight-bold">
+                                                    <span>Following</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
                             </div>
+
+                            <!-- Followers -->
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu
-                                    stumptown aliqua, retro synth master
-                                    cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
-                                    butcher retro keffiyeh
-                                    dreamcatcher
-                                    synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                                    placeat salvia cillum iphone. Seitan
-                                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary follow font-weight-bold">
+                                                    Follow
+                                                </button>
+                                                <!-- <button type="button" class="btn btn-primary follow font-weight-bold">UnFollow</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary follow font-weight-bold">
+                                                    Follow
+                                                </button>
+                                                <!-- <button type="button" class="btn btn-primary follow font-weight-bold">UnFollow</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary follow font-weight-bold">
+                                                    Follow
+                                                </button>
+                                                <!-- <button type="button" class="btn btn-primary follow font-weight-bold">UnFollow</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
+
+                                <div class="card profile-following mb-1" style="border: none;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="50"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary follow font-weight-bold">
+                                                    Follow
+                                                </button>
+                                                <!-- <button type="button" class="btn btn-primary follow font-weight-bold">UnFollow</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-1">
                             </div>
                         </div>
                     </div>
@@ -245,6 +428,6 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="./public/js/jquery-3.5.1.js"></script>
-    <!-- <script src="./script.js"></script> -->
+    <script src="./script.js"></script>
 
 </body>
