@@ -35,7 +35,10 @@ const PostSchema = new mongoose.Schema({
                 }
             },
             authors_like_reply: [mongoose.Schema.Types.ObjectId],
-
+            created_at: {
+                type: Date,
+                default: Date.now()
+            }
         }],
         likes:{
             type: Number,
@@ -49,6 +52,10 @@ const PostSchema = new mongoose.Schema({
             }
         },
         authors_like_comment: [mongoose.Schema.Types.ObjectId],
+        created_at: {
+            type: Date,
+            default: Date.now()
+        }
     }],
     likes:{
         type: Number,
@@ -57,7 +64,13 @@ const PostSchema = new mongoose.Schema({
     authors_like_post: [mongoose.Schema.Types.ObjectId],
     image:{
         type: String
+    },
+    created_at:{
+        type: Date,
+        default: Date.now()
     }
+},{
+    timestamps:true
 })
 
 const Post = mongoose.model('Post', PostSchema);

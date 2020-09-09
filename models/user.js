@@ -55,7 +55,11 @@ const UserSchema = new mongoose.Schema({
         type:String,
         default:'India'
     }
-})
+}, {
+    timestamps:{
+        createdAt: 'joined'
+    }
+});
 
 UserSchema.methods.encryptPassword = function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
