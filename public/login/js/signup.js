@@ -1,6 +1,13 @@
 
-$(document).ready(function ()
-{
+$(document).ready(function (){
+
+    $.get("/profile/verify_user", function (data){
+        console.log(data);
+        if (data) {
+            alert(`${data.username}, you are already logged in.`)
+            window.location.assign('/');
+        }
+    });
 
     let user_username = $('#username');
     let user_name = $('#name');
