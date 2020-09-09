@@ -11,10 +11,6 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    topic:{
-        type: String,
-        required: true
-    },
     text:{
         type: String,
         required: true
@@ -31,22 +27,34 @@ const PostSchema = new mongoose.Schema({
                 type: Number,
                 default: 0
             },
-            author:{
-                type:String
-            }
+            comment_reply_author: {
+                username: String,
+                user_id: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'User'
+                }
+            },
+            authors_like_reply: [mongoose.Schema.Types.ObjectId],
+
         }],
         likes:{
             type: Number,
             default: 0
         },
-        author:{
-            type:String
-        }
+        comment_author:{
+            username:String,
+            user_id:{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        },
+        authors_like_comment: [mongoose.Schema.Types.ObjectId],
     }],
     likes:{
         type: Number,
         default: 0
     },
+    authors_like_post: [mongoose.Schema.Types.ObjectId],
     image:{
         type: String
     }

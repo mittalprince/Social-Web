@@ -12,17 +12,26 @@ const passport = require('../passport/passport-local');
 router.post('/signup', (req, res) =>{
     // console.log(req.body.user);
 
-    User.findOne({
+    User.find({
         email:req.body.user.email,
         username: req.body.user.username
     }).exec((err, found_user)=>{
         if(err){
             console.log("error in /signup");
-            return res.send(undefined);
+            let error = {
+                message: 'Something goes wrong. Please try again Later',
+                errorExist:true
+            }
+            return res.send(error);
         }
         if(found_user){
             console.log("Already exist detail in /signup");
-            return res.send(undefined);
+            let error = {
+                message: 'Username or email already exist.',
+                errorExist: true
+            }
+            
+            return res.send(error);
         }
         
         const newUser = new User()
@@ -34,10 +43,19 @@ router.post('/signup', (req, res) =>{
         User.create(newUser, (err, new_user)=>{
             if(err){
                 console.log("error in /signup while creating");
-                return res.send(undefined);
+                let error = {
+                    message: 'Something goes wrong. Please try again Later',
+                    errorExist: true
+                }
+                return res.send(error);
             }
             if(!new_user){
+                let error = {
+                    message: 'No User created',
+                    errorExist: true
+                }
                 console.log("no user in /signup while creating")
+                return res.send(error);
             }
             
             return res.send(new_user);
@@ -45,6 +63,18 @@ router.post('/signup', (req, res) =>{
     })
 })
 
+/*
+app.get('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/users/' + user.username);
+    });
+  })(req, res, next);
+});
+*/
 
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login/failure',
@@ -58,12 +88,16 @@ router.get('/logout',(req,res)=>{
 
 router.get('/login/failure',(req,res)=>{
     console.log('Failed to Login');
-    res.send(undefined);
+    let error ={
+        message: 'Invalid Username or Password',
+        errorExist:true
+    }
+    res.send(error);
 })
 
 router.get('/login/success',(req,res)=>{
     console.log('Login Successful');
-    res.send(req.user)
+    res.send(req.user);
 })
 
 router.get('/logout', (req, res)=>{

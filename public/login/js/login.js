@@ -16,11 +16,12 @@ $(document).ready(function (){
                 username: username,
                 password: password
             },function(user){
-                if(!user){
-                    alert('Invalid Username or Password');
+                console.log(user);
+                if(user.errorExist){
+                    alert(user.message);
                     window.location.reload(true);
                 } else {
-                    alert('You have successfully logged in');
+                    alert(`Welcome ${user.username}, You have successfully logged in.`);
                     window.location.assign('/');
                 }
             })

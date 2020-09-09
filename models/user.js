@@ -50,6 +50,10 @@ const UserSchema = new mongoose.Schema({
     pimage:{
         type:String,
         default: 'user.png'
+    },
+    country:{
+        type:String,
+        default:'India'
     }
 })
 
