@@ -1,0 +1,296 @@
+<head>
+
+    <title>Event-Appa: Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./home.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fab fa-twitter" id="twitter-icon"></i> Social Web
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Explore</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Account
+                        </a>
+                        <div class="dropdown-menu pull-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="#">Setting</a>
+                            <a class="dropdown-item" href="#">Login</a>
+                            <a class="dropdown-item" href="#">SignUp</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-2">
+            <div class="col-sm-10 col-md-10">
+
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-1">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                </div>
+                                <div class="ml-1 vertical-center">
+                                    <h5 class="text-muted">Want to share something, Prince?</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="sr-only" for="message">post</label>
+                            <textarea style="resize: none;" class="form-control" id="message" rows="4" maxlength="500"
+                                placeholder="What are you thinking?"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col text-left custom-file">
+                                <label for="customFile"><i class="far fa-image fa-2x"></i></label>
+                                <input type="file" class="custom-file-input" id="customFile">
+                            </div>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-primary tweet font-weight-bold">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-1">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                </div>
+                                <div class="ml-1">
+                                    <div class="h5 m-0">Prince Mittal</div>
+                                    <span class="text-muted">@mittalprince</span>
+                                </div>
+                            </div>
+                            <div class="text-muted h7">
+                                <i class="far fa-clock mr-1"></i>10 min ago
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
+
+                        <p class="card-text-custom text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa
+                            praesentium esse magnam nemo dolor
+                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
+                        </p>
+
+                        <div>
+                            <img src="./../images/image-2.jpg" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <a href="#" class="card-link">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <!-- <i class="far fa-thumbs-up"></i> -->
+                                </a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="#" class="card-link"><i class="far fa-comment"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <hr class="mt-2">
+                                <div class="card mb-1" style="border:none">
+                                    <div class="card-header">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="45"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="text-muted h7">
+                                                                                <i class="far fa-clock mr-1"></i>10 min ago
+                                                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-muted h7 mb-2 mr-1"> <i class="far fa-clock mr-1"></i>10 min
+                                            ago</div>
+                                        <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
+
+                                        <p class="card-text-custom text-muted">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae
+                                            nulla rem eos ipsa
+                                            praesentium esse magnam nemo dolor
+                                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste
+                                            voluptates.
+                                        </p>
+
+                                        <div>
+                                            <img src="./../images/image-2.jpg" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col text-center">
+                                                <a href="#" class="card-link">
+                                                    <i class="fas fa-thumbs-up"></i>
+                                                    <!-- <i class="far fa-thumbs-up"></i> -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="mt-2">
+                                <div class="card mb-1" style="border:none">
+                                    <div class="card-header">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="mr-1">
+                                                    <img class="rounded-circle" width="45"
+                                                        src="https://picsum.photos/50/50" alt="">
+                                                </div>
+                                                <div class="ml-1">
+                                                    <div class="h5 m-0">Prince Mittal</div>
+                                                    <span class="text-muted">@mittalprince</span>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="text-muted h7">
+                                                                                                                <i class="far fa-clock mr-1"></i>10 min ago
+                                                                                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-muted h7 mb-2 mr-1"> <i class="far fa-clock mr-1"></i>10 min
+                                            ago</div>
+                                        <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
+
+                                        <p class="card-text-custom text-muted">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae
+                                            nulla rem eos ipsa
+                                            praesentium esse magnam nemo dolor
+                                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste
+                                            voluptates.
+                                        </p>
+
+                                        <div>
+                                            <img src="./../images/image-1.jpeg" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col text-center">
+                                                <a href="#" class="card-link">
+                                                    <i class="fas fa-thumbs-up"></i>
+                                                    <!-- <i class="far fa-thumbs-up"></i> -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-1">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                </div>
+                                <div class="ml-1">
+                                    <div class="h5 m-0">Prince Mittal</div>
+                                    <span class="text-muted">@mittalprince</span>
+                                </div>
+                            </div>
+                            <div class="text-muted h7">
+                                <i class="far fa-clock mr-1"></i>10 min ago
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title-custom">Lorem ipsum dolor sit amet, consectetur adip.</p>
+
+                        <p class="card-text-custom text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa
+                            praesentium esse magnam nemo dolor
+                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
+                        </p>
+
+                        <div>
+                            <img src="./../images/image-1.jpeg" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <a href="#" class="card-link">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <!-- <i class="far fa-thumbs-up"></i> -->
+                                </a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="#" class="card-link"><i class="far fa-comment"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="./public/js/jquery-3.5.1.js"></script>
+    <script src="./script.js"></script>
+
+</body>
