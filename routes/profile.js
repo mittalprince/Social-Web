@@ -49,7 +49,12 @@ function ensureAuthenticated(req, res, next){
         return next();
     } else {
         console.log('You are not logged in');
-        res.redirect('/login');
+        let error = {
+            message: 'You are not logged in',
+            errorExist: true,
+            loggedIn: false
+        }
+        res.send(error);
     }
 }
 
@@ -61,20 +66,28 @@ router.get('/verify_user', (req,res)=>{
 })
 
 // get detail of req.user.username
-router.get('/', ensureAuthenticated, (req,res)=>{
-    console.log(req.user.username);
+router.get('/detail', ensureAuthenticated, (req,res)=>{
+    // console.log(req.user.username);
     User.findOne({
         username: req.user.username
     }, (err, found_user)=>{
         if(err){
             console.log('Error in user/details',err);
-            return res.send(undefined);
+            let error = {
+                message: "Something goes wrong please try again later",
+                errorExist:true
+            }
+            return res.send(error);
         }
         if(!found_user){
             console.log("User not found in user/details");
-            return res.send(undefined);
+            let error = {
+                message: "User not found",
+                errorExist:true
+            }
+            return res.send(error);
         }
-        // console.log(found_user);
+        console.log(found_user);
         return res.send(found_user);
     })
 })

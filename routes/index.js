@@ -24,8 +24,9 @@ router.post('/signup', (req, res) =>{
             }
             return res.send(error);
         }
-        if(found_user){
+        if(found_user.length){
             console.log("Already exist detail in /signup");
+            console.log(found_user)
             let error = {
                 message: 'Username or email already exist.',
                 errorExist: true
@@ -81,10 +82,6 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/login/success'
 }));
 
-router.get('/logout',(req,res)=>{
-    req.logout();
-    res.redirect('/');
-})
 
 router.get('/login/failure',(req,res)=>{
     console.log('Failed to Login');
@@ -102,8 +99,8 @@ router.get('/login/success',(req,res)=>{
 
 router.get('/logout', (req, res)=>{
     req.logOut();
-    console.log("Logged Out Succefully");
-    res.redirect('/login');
+    console.log("Logged Out Successfully");
+    res.redirect('/');
 })
 
 module.exports = router;

@@ -42,7 +42,7 @@ $(document).ready(function (){
                         console.log(user);
                         if (user.errorExist) {
                             alert(user.message);
-                            window.location.href = './signup.html';
+                            window.location.reload(true);
                         } else {
                             alert(`Welcome ${user.username}, Please Login to continue`);
                             window.location.href = '/';

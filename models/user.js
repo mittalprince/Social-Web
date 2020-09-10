@@ -49,7 +49,7 @@ const UserSchema = new mongoose.Schema({
     }],
     pimage:{
         type:String,
-        default: 'user.png'
+        default: 'https://github.com/mittalprince/Social-Web/blob/master/public/images/user.jpg'
     },
     country:{
         type:String,
